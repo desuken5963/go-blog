@@ -9,16 +9,22 @@ services:
       - ./:/app
     depends_on:
       - db
+
   db:
     image: mysql:5.7
     environment:
       - MYSQL_DATABASE=go_blog_db
-      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=workuser
+      - MYSQL_ROOT_PASSWORD=Passw0rd!
     command: >
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_general_ci
+      --skip-character-set-client-handshake
     ports:
       - 3306:3306
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
 
 volumes:
   db-data:
