@@ -14,15 +14,6 @@ ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
 ENV LC_ALL ja_JP.UTF-8
 
-# direnv をインストール
-RUN curl -sfL https://direnv.net/install.sh | bash
-
-# direnv を PATH に追加
-ENV PATH="$PATH:/usr/local/bin"
-
-# direnv フックをシェル設定に追加
-RUN echo 'eval "$(direnv hook bash)"' >> /etc/bash.bashrc
-
 # コンテナ内の作業ディレクトリを設定
 WORKDIR /app
 
@@ -31,9 +22,6 @@ COPY . .
 
 # 必要なパッケージをインストール
 RUN go mod download
-
-# .envrc の許可を自動化
-RUN direnv allow || true
 
 # アプリケーションをビルド
 RUN go build -o main .
