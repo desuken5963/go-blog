@@ -1,2 +1,23 @@
-.history
+# 一時ファイルとビルド成果物
+tmp/
+*.log
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+
+# 環境設定ファイル
 .envrc
+
+# マイグレーション一時ファイル
+migrations/*.tmp
+
+# Go ビルド成果物
+main
+
+# OS/エディタ固有のファイル
+.DS_Store
+.idea/
+.vscode/
+.history/

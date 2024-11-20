@@ -14,8 +14,14 @@ ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
 ENV LC_ALL ja_JP.UTF-8
 
-# コンテナ内の作業ディレクトリを設定
+# 作業ディレクトリを設定
 WORKDIR /app
+
+# Air をインストール
+RUN go install github.com/cosmtrek/air@v1.40.4
+
+# Goose をインストール
+RUN go install github.com/pressly/goose/v3/cmd/goose@v3.22.1
 
 # ローカルのソースコードをコンテナにコピー
 COPY . .
@@ -23,11 +29,8 @@ COPY . .
 # 必要なパッケージをインストール
 RUN go mod download
 
-# アプリケーションをビルド
-RUN go build -o main .
-
-# コンテナのポートを公開
+# ポートを公開
 EXPOSE 8080
 
-# アプリケーションを実行
-CMD ["go", "run", "main.go"]
+# Air を使ってアプリケーションをホットリロード
+CMD ["air"]
