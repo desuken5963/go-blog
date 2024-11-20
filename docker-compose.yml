@@ -7,6 +7,9 @@ services:
       - 8080:8080
     volumes:
       - ./:/app
+      - /app/tmp
+      - ./db/migrations:/app/migrations
+    command: air
     depends_on:
       - db
     environment:
