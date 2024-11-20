@@ -1,0 +1,6 @@
+development:
+  driver: mymysql
+  open: tcp:db:3306*go_blog_db/workuser/Passw0rd!
+# production:
+#   driver: mymysql
+#   open: tcp:db:3306*go_blog_db/workuser/Passw0rd!
