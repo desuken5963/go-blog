@@ -17,6 +17,7 @@ services:
 
   db:
     image: mysql:5.7
+    platform: linux/x86_64
     environment:
       - MYSQL_DATABASE=go_blog_db
       - MYSQL_USER=workuser
