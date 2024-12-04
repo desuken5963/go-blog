@@ -19,6 +19,7 @@ services:
     image: mysql/mysql-server:5.7.13
     platform:  linux/amd64
     environment:
+      - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=go_blog_db
       - MYSQL_USER=workuser
       - MYSQL_PASSWORD=Passw0rd!
