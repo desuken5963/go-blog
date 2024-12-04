@@ -16,8 +16,8 @@ services:
       - DSN=workuser:Passw0rd!@tcp(db:3306)/go_blog_db?parseTime=true&autocommit=0&sql_mode='TRADITIONAL,NO_AUTO_VALUE_ON_ZERO,ONLY_FULL_GROUP_BY'
 
   db:
-    image: mysql:5.7
-    platform: linux/x86_64
+    image: mysql/mysql-server:5.7.13
+    platform:  linux/amd64
     environment:
       - MYSQL_DATABASE=go_blog_db
       - MYSQL_USER=workuser
