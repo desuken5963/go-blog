@@ -8,6 +8,30 @@ app コンテナからアプリケーションの db に接続する。
 root@hogehoge:/app# mysql -u root -ppassword -h db go_blog_db
 ```
 
+ユーザーの作成
+
+```
+MySQL [go_blog_db]> CREATE USER 'workuser'@'%' IDENTIFIED BY 'Passw0rd!';
+```
+
+ユーザーの確認
+
+```
+MySQL [go_blog_db]> SELECT host, user FROM mysql.user;
+```
+
+ユーザーの権限付与
+
+```
+MySQL [go_blog_db]> GRANT ALL PRIVILEGES ON techblog.* TO workuser@localhost;
+```
+
+ユーザーの削除
+
+```
+MySQL [go_blog_db]> DROP USER 'workuser'@'%';
+```
+
 ## goose の扱い
 
 マイグレーションの状態確認
