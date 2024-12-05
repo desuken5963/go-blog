@@ -5,7 +5,7 @@
 app コンテナからアプリケーションの db に接続する。
 
 ```
-root@hogehoge:/app# mysql -u workuser -pPassw0rd -h db go_blog_db
+root@hogehoge:/app# mysql -u root -ppassword -h db go_blog_db
 ```
 
 ユーザーの作成
@@ -18,6 +18,12 @@ MySQL [go_blog_db]> CREATE USER 'workuser'@'%' IDENTIFIED BY 'Passw0rd!';
 
 ```
 MySQL [go_blog_db]> SELECT host, user FROM mysql.user;
+```
+
+ユーザーの権限付与
+
+```
+MySQL [go_blog_db]> GRANT ALL PRIVILEGES ON techblog.* TO workuser@localhost;
 ```
 
 ユーザーの削除
