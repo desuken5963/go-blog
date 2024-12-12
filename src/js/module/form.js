@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 新規作成時の HTTP メソッドは POST を利用します。
     mode.method = 'POST';
     // 作成リクエスト、および戻るボタンの遷移先のパスは "/articles" になります。
-    mode.url = '/articles';
+    mode.url = '/articles/create';
   } else if (window.location.pathname.endsWith('edit')) {
     // 更新時の HTTP メソッドは PATCH を利用します。
     mode.method = 'PATCH';
     // 更新リクエスト、および戻るボタンの遷移先のパスは "/articles/:articleID" になります。
-    mode.url = `/articles/${window.location.pathname.split('/')[2]}`;
+    mode.url = `/articles/update/${window.location.pathname.split('/')[2]}`;
   }
   const { method, url } = mode;
 
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let status;
 
     // fetch API を利用してリクエストを送信します。
-    fetch(`${url}/create`, {
+    fetch(url, {
       method: method,
       headers: { 'X-CSRF-Token': csrfToken },
       body: fd
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (status === 200) {
           // 成功時は一覧画面に遷移させます。
-          window.location.href = url;
+          window.location.href = "/articles";
         }
 
         if (body.ValidationErrors) {
