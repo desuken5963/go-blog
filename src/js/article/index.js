@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let statusCode;
 
     // Fetch API を利用して削除リクエストを送信します。
-    fetch(`/api/articles/${id}`, {
+    fetch(`/articles/delete/${id}`, {
       method: 'DELETE',
       headers: { 'X-CSRF-Token': csrfToken }
     })

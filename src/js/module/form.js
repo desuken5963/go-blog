@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let status;
 
     // fetch API を利用してリクエストを送信します。
-    fetch(`/api${url}`, {
+    fetch(`${url}/create`, {
       method: method,
       headers: { 'X-CSRF-Token': csrfToken },
       body: fd
