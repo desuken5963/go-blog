@@ -35,9 +35,9 @@ func main() {
 
 	// HTML ではなく JSON を返却する処理は "/api" で開始するようにします。
 	// 記事に関する処理なので "/articles" を続けます。
-	e.GET("/api/articles", handler.ArticleList)                 // 一覧
-	e.POST("/api/articles", handler.ArticleCreate)              // 作成
-	e.DELETE("/api/articles/:articleID", handler.ArticleDelete) // 削除
+	e.GET("/api/articles", handler.ArticleList)                    // 一覧
+	e.POST("/articles/create", handler.ArticleCreate)              // 作成
+	e.DELETE("/articles/delete/:articleID", handler.ArticleDelete) // 削除
 
 	// Webサーバーをポート番号 8080 で起動する
 	e.Logger.Fatal(e.Start(":8080"))
