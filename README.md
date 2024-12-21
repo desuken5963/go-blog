@@ -1,4 +1,4 @@
-# go_blog
+# go-blog
 
 ## db の接続
 
